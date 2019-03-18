@@ -1,0 +1,27 @@
+package ternary
+import "github.com/lixi520/facility/set"
+
+{{range $idx, $typeName := .types}}
+{{$titledName := $typeName|Title}}
+func Ternary{{$titledName}}(condi bool, ifTrue {{$typeName}}, ifFalse {{$typeName}}) {{$typeName}} {
+    if condi {
+        return ifTrue
+    }
+    return ifFalse
+}
+
+func Ternary{{$titledName}}Slice(condi bool, ifTrue []{{$typeName}}, ifFalse []{{$typeName}}) []{{$typeName}} {
+    if condi {
+        return ifTrue
+    }
+    return ifFalse
+}
+
+func Ternary{{$titledName}}Set(condi bool, ifTrue set.{{$typeName|Title}}Set, ifFalse set.{{$typeName|Title}}Set) set.{{$typeName|Title}}Set {
+    if condi {
+        return ifTrue
+    }
+    return ifFalse
+}
+
+{{end}}

@@ -1,0 +1,39 @@
+package math
+
+
+{{range $index,$v := .types}}
+    func Min{{$v|Title}}(v1, v2 {{$v}}) {{$v}} {
+        if v1 < v2 {
+            return v1
+        }
+        return v2
+     }
+
+    func Max{{$v|Title}}(v1, v2 {{$v}}) {{$v}} {
+        if v1 > v2 {
+        	return v1
+        }
+        return v2
+    }
+
+     func SliceMax{{$v|Title}}(v ...{{$v}}) {{$v}} {
+        max := LimitsMin{{$v|Title}}
+        for _, i := range v {
+        	if max < i {
+        		max = i
+        	}
+        }
+        return max
+      }
+
+      func SliceMin{{$v|Title}}(v ...{{$v}}) {{$v}} {
+        min := LimitsMax{{$v|Title}}
+        for _, i := range v {
+            if min > i {
+                min = i
+            }
+        }
+        return min
+       }
+
+{{end}}

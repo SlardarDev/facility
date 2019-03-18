@@ -1,0 +1,40 @@
+package sorts
+
+import "sort"
+
+{{range $idx, $typeName := .types }}
+type {{$typeName}}Slice []{{$typeName}}
+
+func (p {{$typeName}}Slice) Len() int           { return len(p) }
+func (p {{$typeName}}Slice) Less(i, j int) bool { return p[i] < p[j] }
+func (p {{$typeName}}Slice) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+
+type {{$typeName}}SliceRev []{{$typeName}}
+
+func (p {{$typeName}}SliceRev) Len() int           { return len(p) }
+func (p {{$typeName}}SliceRev) Less(i, j int) bool { return p[i] > p[j] }
+func (p {{$typeName}}SliceRev) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+
+func {{$typeName|Title}}s(s []{{$typeName}}) {
+	sort.Sort({{$typeName}}Slice(s))
+}
+
+func {{$typeName|Title}}sRev(s []{{$typeName}}) {
+	sort.Sort({{$typeName}}SliceRev(s))
+}
+
+func Search{{$typeName|Title}}s(s1 []{{$typeName}}, s2 {{$typeName}}) int {
+	return sort.Search(len(s1), func(i int) bool {
+		return s1[i] >= s2
+	})
+}
+
+func Search{{$typeName|Title}}sRev(s1 []{{$typeName}}, s2 {{$typeName}}) int {
+	return sort.Search(len(s1), func(i int) bool {
+		return s1[i] <= s2
+	})
+}
+
+
+
+{{end}}

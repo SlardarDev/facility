@@ -1,0 +1,9 @@
+package typeconv
+
+
+{{range $idx, $typ := .Types}}
+func {{$typ|Title}}Ptr(arg {{$typ}}) *{{$typ}} {
+return &arg
+}
+
+{{end}}

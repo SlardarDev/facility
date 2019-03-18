@@ -1,0 +1,21 @@
+package mapdefault
+
+{{$keyTypes := .keyTypes}}
+{{$valueTypes := .valueTypes}}
+
+{{range $idx, $keyType := $keyTypes}}
+{{range $idx2, $vType := $valueTypes}}
+{{$vTypeName := (Replace $vType "{}"  "" -1)}}
+
+func {{$keyType|Title}}{{$vTypeName|Title}}(m map[{{$keyType}}]{{$vType}}, key {{$keyType}}, defaultValue {{$vType}}) {{$vType}} {
+    if m == nil {
+        return defaultValue
+    }
+    if v, ok := m[key]; ok {
+        return v
+    }
+    return defaultValue
+}
+
+{{end}}
+{{end}}

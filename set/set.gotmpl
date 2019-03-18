@@ -1,0 +1,118 @@
+package set
+
+{{range $idx, $typeName := .types }}
+
+{{$titledName := $typeName|Title}}
+{{$className := Concat $titledName "Set"}}
+
+type {{$className}} map[{{$typeName}}]struct{}
+
+
+func (s {{$className}}) Exist(key {{$typeName}}) bool {
+    if s == nil {
+        return false
+    }
+    _, ok := s[key]
+    return ok
+}
+
+
+func New{{$className}}(keys ...{{$typeName}}) {{$className}} {
+    s := {{$className}}{}
+    for _, k := range keys {
+        s[k] = struct{}{}
+    }
+    return s
+}
+
+func (s {{$className}}) Add(key {{$typeName}}) {
+    s[key] = struct{}{}
+}
+
+func (s {{$className}}) AddAll(keys ...{{$typeName}}) {
+    if len(keys) > 0 {
+        for _, key := range keys {
+            s[key] = struct{}{}
+        }
+    }
+
+}
+
+
+func (s {{$className}}) Remove(key {{$typeName}}) {
+    delete(s, key)
+}
+
+func (s {{$className}}) Contains(key {{$typeName}}) bool {
+    if s == nil {
+        return false
+    }
+    _, exist := s[key]
+    return exist
+}
+
+func (s {{$className}}) ToList() []{{$typeName}} {
+    var ret []{{$typeName}}
+
+    for k := range s {
+        ret = append(ret, k)
+    }
+    return ret
+}
+
+func (s {{$className}}) Intersect(s2 {{$className}}) {{$className}} {
+    newSet := {{$className}}{}
+    for ele := range s {
+        if s2.Contains(ele) {
+            newSet.Add(ele)
+        }
+    }
+    return newSet
+}
+
+func (s {{$className}}) Union(s2 {{$className}}) {{$className}} {
+    newSet := {{$className}}{}
+    for ele := range s {
+        newSet.Add(ele)
+    }
+    for ele := range s2 {
+        newSet.Add(ele)
+    }
+    return newSet
+}
+
+func (s {{$className}}) Minus(s2 {{$className}}) {{$className}} {
+    newSet := {{$className}}{}
+    for ele := range s {
+        if !s2.Contains(ele) {
+            newSet.Add(ele)
+        }
+    }
+    return newSet
+}
+
+func (s {{$className}}) MinusInPlace(s2 {{$className}}) {
+    for ele := range s2 {
+        s.Remove(ele)
+    }
+}
+
+func (s {{$className}}) IsEmpty() bool {
+    return len(s) == 0
+}
+
+func (s {{$className}}) Equal(s2 {{$className}}) bool {
+    if len(s) != len(s2) {
+        return false
+    }
+
+    for ele := range s {
+        if !s2.Contains(ele) {
+            return false
+        }
+    }
+
+    return true
+
+}
+{{end}}

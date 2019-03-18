@@ -1,0 +1,13 @@
+package slice
+
+{{range $idx, $typeName := .types}}
+
+func {{$typeName|Title}}Contains(s []{{$typeName}}, e {{$typeName}}) bool {
+    for _, d := range s {
+        if d == e {
+            return true
+        }
+    }
+    return false
+}
+{{end}}

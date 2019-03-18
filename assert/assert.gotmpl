@@ -1,0 +1,135 @@
+package assert
+import (
+"github.com/lixi520/facility/slice"
+"github.com/lixi520/facility/set"
+)
+{{range $idx, $typeName := .types }}
+
+{{if not (or  (eq $typeName "float32") (eq $typeName "float64"))}}
+func Equal{{$typeName|Title}}SliceAsSet(a, b []{{$typeName}}) {
+	if !slice.Equal{{$typeName|Title}}SliceAsSet(a, b) {
+		panic(newAssertPanic("%v and %v is not equal", a, b))
+	}
+}
+
+func Equal{{$typeName|Title}}Slice(a, b []{{$typeName}}) {
+	if !slice.Equal{{$typeName|Title}}Slice(a, b) {
+		panic(newAssertPanic("%v and %v is not equal", a, b))
+	}
+}
+
+
+func NotEqual{{$typeName|Title}}SliceAsSet(a, b []{{$typeName}}) {
+	if slice.Equal{{$typeName|Title}}SliceAsSet(a, b) {
+		panic(newAssertPanic("%v and %v is equal", a, b))
+	}
+}
+
+func NotEqual{{$typeName|Title}}Slice(a, b []{{$typeName}}) {
+	if slice.Equal{{$typeName|Title}}Slice(a, b) {
+		panic(newAssertPanic("%v and %v is equal", a, b))
+	}
+}
+
+func Equal{{$typeName|Title}}Set(s1, s2 set.{{$typeName|Title}}Set) {
+    if !s1.Equal(s2) {
+        panic(newAssertPanic("%v and %v is equal", s1, s2))
+    }
+}
+
+func NotEqual{{$typeName|Title}}Set(s1, s2 set.{{$typeName|Title}}Set) {
+    if s1.Equal(s2) {
+        panic(newAssertPanic("%v and %v is not equal", s1, s2))
+    }
+}
+
+func Equal{{$typeName|Title}}SliceAsSetWithMsg(a, b []{{$typeName}}, msg string) {
+	if !slice.Equal{{$typeName|Title}}SliceAsSet(a, b) {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func Equal{{$typeName|Title}}SliceWithMsg(a, b []{{$typeName}}, msg string) {
+	if !slice.Equal{{$typeName|Title}}Slice(a, b) {
+		panic(newAssertPanic(msg))
+	}
+}
+
+
+func NotEqual{{$typeName|Title}}SliceAsSetWithMsg(a, b []{{$typeName}}, msg string) {
+	if slice.Equal{{$typeName|Title}}SliceAsSet(a, b) {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func NotEqual{{$typeName|Title}}SliceWithMsg(a, b []{{$typeName}}, msg string) {
+	if slice.Equal{{$typeName|Title}}Slice(a, b) {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func Equal{{$typeName|Title}}SetWithMsg(s1, s2 set.{{$typeName|Title}}Set, msg string) {
+    if !s1.Equal(s2) {
+        panic(newAssertPanic(msg))
+    }
+}
+
+func NotEqual{{$typeName|Title}}SetWithMsg(s1, s2 set.{{$typeName|Title}}Set, msg string) {
+    if s1.Equal(s2) {
+        panic(newAssertPanic(msg))
+    }
+}
+
+{{end}}
+
+func Equal{{$typeName|Title}}(a, b {{$typeName}}) {
+	if a != b {
+		panic(newAssertPanic("%v and %v is not equal", a, b))
+	}
+}
+
+func NotEqual{{$typeName|Title}}(a, b {{$typeName}}) {
+	if a == b {
+		panic(newAssertPanic("%v and %v is equal", a, b))
+	}
+}
+
+func Equal{{$typeName|Title}}WithMsg(a, b {{$typeName}}, msg string) {
+	if a != b {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func NotEqual{{$typeName|Title}}WithMsg(a, b {{$typeName}}, msg string) {
+	if a == b {
+		panic(newAssertPanic(msg))
+	}
+}
+
+{{end}}
+
+{{range $idx, $typeName := .numTypes }}
+func Great{{$typeName|Title}}(a, b {{$typeName}}) {
+	if a <= b {
+		panic(newAssertPanic("%v is less than %v", a, b))
+	}
+}
+
+func Little{{$typeName|Title}}(a, b {{$typeName}}) {
+	if a >= b {
+		panic(newAssertPanic("%v is great than %v", a, b))
+	}
+}
+
+func Great{{$typeName|Title}}WithMsg(a, b {{$typeName}}, msg string) {
+	if a <= b {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func Little{{$typeName|Title}}WithMsg(a, b {{$typeName}}, msg string) {
+	if a >= b {
+		panic(newAssertPanic(msg))
+	}
+}
+{{end}}

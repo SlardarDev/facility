@@ -1,0 +1,66 @@
+package slice
+
+import "github.com/cstockton/go-conv"
+
+{{$keyTypes := .keyTypes}}
+{{$valueTypes := .valueTypes}}
+
+
+{{range $idx1, $k := $keyTypes}}
+{{range $idx2, $v := $valueTypes}}
+
+{{if not (eq $k $v)}}
+{{if (eq $v "interface")}}
+{{else if (eq $k "interface")}}
+func {{Concat ($k|Title) "To" ($v|Title)}}(s []{{$k}}{}) ([]{{$v}}, error) {
+        ret := make([]{{$v}}, 0, len(s))
+        for _, ele := range s {
+       		o, e := conv.{{$v|Title}}(ele)
+       		if e != nil {
+       			return nil, e
+       		}
+       		ret = append(ret, o)
+       	}
+       	return ret, nil
+}
+
+func {{Concat ($k|Title) "To" ($v|Title)}}Must(s []{{$k}}{}) []{{$v}} {
+        ret := make([]{{$v}}, 0, len(s))
+        for _, ele := range s {
+       		o, e := conv.{{$v|Title}}(ele)
+       		if e != nil {
+       			return nil
+       		}
+       		ret = append(ret, o)
+       	}
+       	return ret
+}
+{{else}}
+func {{Concat ($k|Title) "To" ($v|Title)}}(s []{{$k}}) ([]{{$v}}, error) {
+        ret := make([]{{$v}}, 0, len(s))
+        for _, ele := range s {
+       		o, e := conv.{{$v|Title}}(ele)
+       		if e != nil {
+       			return nil, e
+       		}
+       		ret = append(ret, o)
+       	}
+       	return ret, nil
+}
+
+func {{Concat ($k|Title) "To" ($v|Title)}}Must(s []{{$k}}) []{{$v}} {
+        ret := make([]{{$v}}, 0, len(s))
+        for _, ele := range s {
+       		o, e := conv.{{$v|Title}}(ele)
+       		if e != nil {
+       			return nil
+       		}
+       		ret = append(ret, o)
+       	}
+       	return ret
+}
+{{end}}
+{{end}}
+
+{{end}}
+{{end}}

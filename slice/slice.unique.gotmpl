@@ -1,0 +1,43 @@
+package slice
+import "github.com/lixi520/facility/set"
+{{range $idx, $typeName := .types}}
+func Unique{{$typeName|Title}}Slice(eles []{{$typeName}}) []{{$typeName}} {
+    s := set.{{$typeName|Title}}Set{}
+    s.AddAll(eles...)
+    return s.ToList()
+}
+
+
+{{if not (or  (eq $typeName "float32") (eq $typeName "float64"))}}
+func Equal{{$typeName|Title}}Slice(a, b []{{$typeName}}) bool {
+    if len(a) != len(b) {
+        return false
+    }
+
+    for idx , v := range a {
+        if b[idx] != v {
+            return false
+        }
+    }
+    return true
+}
+
+func Equal{{$typeName|Title}}SliceAsSet(a, b []{{$typeName}}) bool {
+    if len(a) != len(b) {
+            return false
+    }
+    if len(a) == 0 {
+        return true
+    }
+
+    sa := set.{{$typeName|Title}}Set{}
+    sb := set.{{$typeName|Title}}Set{}
+
+    sa.AddAll(a...)
+    sb.AddAll(b...)
+    return sa.Equal(sb)
+
+}
+{{end}}
+
+{{end}}

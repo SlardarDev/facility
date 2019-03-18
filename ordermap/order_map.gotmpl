@@ -1,0 +1,51 @@
+package ordermap
+
+import "github.com/lixi520/facility/sorts"
+{{$keyTypes := .keyTypes}}
+{{$valueTypes := .valueTypes}}
+
+{{range $idx, $keyType := $keyTypes}}
+{{range $idx2, $vType := $valueTypes}}
+
+{{$vTypeName := (Replace $vType "{}"  "" -1)}}
+func {{$keyType|Title}}{{$vTypeName|Title}}(a map[{{$keyType}}]{{$vType}}) func() ({{$keyType}}, {{$vType}}, bool) {
+    var keys []{{$keyType}}
+    for k := range a {
+        keys = append(keys, k)
+    }
+
+    sorts.{{$keyType|Title}}s(keys)
+    var current = 0
+    return func() ({{$keyType}}, {{$vType}}, bool) {
+    	if current >= len(keys) {
+    		 return default{{$keyType|Title}}, default{{$vTypeName|Title}}, false
+    	}
+    	k, v := keys[current], a[keys[current]]
+    	current = current + 1
+    	return k, v, true
+    }
+}
+
+func {{$keyType|Title}}{{$vTypeName|Title}}Rev(a map[{{$keyType}}]{{$vType}}) func() ({{$keyType}}, {{$vType}}, bool) {
+
+    var keys []{{$keyType}}
+    for k := range a {
+   		keys = append(keys, k)
+   	}
+
+    sorts.{{$keyType|Title}}sRev(keys)
+    var current = 0
+    return func() ({{$keyType}}, {{$vType}}, bool) {
+    	if current >= len(keys) {
+    		return default{{$keyType|Title}}, default{{$vTypeName|Title}}, false
+    	}
+    	k, v := keys[current], a[keys[current]]
+    	current = current + 1
+    	return k, v, true
+   	}
+
+}
+{{end}}
+{{end}}
+
+
