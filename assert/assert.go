@@ -3,13 +3,29 @@ package assert
 import (
 	"math"
 	"reflect"
+
+	"github.com/SlardarDev/facility/slice"
 )
 
 func IsNil(someThing interface{}) {
 	if someThing == nil {
 		return
 	}
-	if !reflect.ValueOf(someThing).IsNil() {
+	// The argument of IsNil must be
+	// a chan, func, interface, map, pointer, or slice value;
+	// if it is not, IsNil panics.
+	// 详见：https://golang.org/pkg/reflect/#Value.IsNil
+	v := reflect.ValueOf(someThing)
+	if !slice.UintContains([]uint{
+		uint(reflect.Chan),
+		uint(reflect.Func),
+		uint(reflect.Interface),
+		uint(reflect.Map),
+		uint(reflect.Ptr),
+		uint(reflect.Slice)}, uint(v.Kind())) {
+		panic(newAssertPanic("%+v is not nil", someThing))
+	}
+	if !v.IsNil() {
 		panic(newAssertPanic("%+v is not nil", someThing))
 	}
 }
@@ -17,6 +33,20 @@ func IsNil(someThing interface{}) {
 func IsNotNil(someThing interface{}) {
 	if someThing == nil {
 		panic(newAssertPanic("%+v is nil", someThing))
+	}
+	// The argument of IsNil must be
+	// a chan, func, interface, map, pointer, or slice value;
+	// if it is not, IsNil panics.
+	// 详见：https://golang.org/pkg/reflect/#Value.IsNil
+	v := reflect.ValueOf(someThing)
+	if !slice.UintContains([]uint{
+		uint(reflect.Chan),
+		uint(reflect.Func),
+		uint(reflect.Interface),
+		uint(reflect.Map),
+		uint(reflect.Ptr),
+		uint(reflect.Slice)}, uint(v.Kind())) {
+		return
 	}
 	if reflect.ValueOf(someThing).IsNil() {
 		panic(newAssertPanic("%+v is nil", someThing))

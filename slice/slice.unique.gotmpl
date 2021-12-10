@@ -1,5 +1,5 @@
 package slice
-import "github.com/lixi520/facility/set"
+import "github.com/SlardarDev/facility/set"
 {{range $idx, $typeName := .types}}
 func Unique{{$typeName|Title}}Slice(eles []{{$typeName}}) []{{$typeName}} {
     s := set.{{$typeName|Title}}Set{}

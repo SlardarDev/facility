@@ -1,9 +1,7 @@
 package assert
 
-import (
-	"github.com/lixi520/facility/set"
-	"github.com/lixi520/facility/slice"
-)
+import "github.com/SlardarDev/facility/slice"
+import "github.com/SlardarDev/facility/set"
 
 func EqualIntSliceAsSet(a, b []int) {
 	if !slice.EqualIntSliceAsSet(a, b) {
@@ -480,6 +478,102 @@ func EqualInt64WithMsg(a, b int64, msg string) {
 }
 
 func NotEqualInt64WithMsg(a, b int64, msg string) {
+	if a == b {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func EqualUintSliceAsSet(a, b []uint) {
+	if !slice.EqualUintSliceAsSet(a, b) {
+		panic(newAssertPanic("%v and %v is not equal", a, b))
+	}
+}
+
+func EqualUintSlice(a, b []uint) {
+	if !slice.EqualUintSlice(a, b) {
+		panic(newAssertPanic("%v and %v is not equal", a, b))
+	}
+}
+
+func NotEqualUintSliceAsSet(a, b []uint) {
+	if slice.EqualUintSliceAsSet(a, b) {
+		panic(newAssertPanic("%v and %v is equal", a, b))
+	}
+}
+
+func NotEqualUintSlice(a, b []uint) {
+	if slice.EqualUintSlice(a, b) {
+		panic(newAssertPanic("%v and %v is equal", a, b))
+	}
+}
+
+func EqualUintSet(s1, s2 set.UintSet) {
+	if !s1.Equal(s2) {
+		panic(newAssertPanic("%v and %v is equal", s1, s2))
+	}
+}
+
+func NotEqualUintSet(s1, s2 set.UintSet) {
+	if s1.Equal(s2) {
+		panic(newAssertPanic("%v and %v is not equal", s1, s2))
+	}
+}
+
+func EqualUintSliceAsSetWithMsg(a, b []uint, msg string) {
+	if !slice.EqualUintSliceAsSet(a, b) {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func EqualUintSliceWithMsg(a, b []uint, msg string) {
+	if !slice.EqualUintSlice(a, b) {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func NotEqualUintSliceAsSetWithMsg(a, b []uint, msg string) {
+	if slice.EqualUintSliceAsSet(a, b) {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func NotEqualUintSliceWithMsg(a, b []uint, msg string) {
+	if slice.EqualUintSlice(a, b) {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func EqualUintSetWithMsg(s1, s2 set.UintSet, msg string) {
+	if !s1.Equal(s2) {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func NotEqualUintSetWithMsg(s1, s2 set.UintSet, msg string) {
+	if s1.Equal(s2) {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func EqualUint(a, b uint) {
+	if a != b {
+		panic(newAssertPanic("%v and %v is not equal", a, b))
+	}
+}
+
+func NotEqualUint(a, b uint) {
+	if a == b {
+		panic(newAssertPanic("%v and %v is equal", a, b))
+	}
+}
+
+func EqualUintWithMsg(a, b uint, msg string) {
+	if a != b {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func NotEqualUintWithMsg(a, b uint, msg string) {
 	if a == b {
 		panic(newAssertPanic(msg))
 	}
@@ -1128,6 +1222,30 @@ func GreatInt64WithMsg(a, b int64, msg string) {
 }
 
 func LittleInt64WithMsg(a, b int64, msg string) {
+	if a >= b {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func GreatUint(a, b uint) {
+	if a <= b {
+		panic(newAssertPanic("%v is less than %v", a, b))
+	}
+}
+
+func LittleUint(a, b uint) {
+	if a >= b {
+		panic(newAssertPanic("%v is great than %v", a, b))
+	}
+}
+
+func GreatUintWithMsg(a, b uint, msg string) {
+	if a <= b {
+		panic(newAssertPanic(msg))
+	}
+}
+
+func LittleUintWithMsg(a, b uint, msg string) {
 	if a >= b {
 		panic(newAssertPanic(msg))
 	}

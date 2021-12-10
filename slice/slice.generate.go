@@ -1,6 +1,6 @@
 package slice
 
-import "github.com/cstockton/go-conv"
+import "github.com/SlardarDev/facility/conv"
 
 func IntToInt8(s []int) ([]int8, error) {
 	ret := make([]int8, 0, len(s))
@@ -90,6 +90,30 @@ func IntToInt64Must(s []int) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func IntToUint(s []int) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func IntToUintMust(s []int) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -290,6 +314,14 @@ func IntToBoolMust(s []int) []bool {
 	return ret
 }
 
+func IntToInterface(s []int) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func Int8ToInt(s []int8) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -378,6 +410,30 @@ func Int8ToInt64Must(s []int8) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func Int8ToUint(s []int8) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func Int8ToUintMust(s []int8) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -578,6 +634,14 @@ func Int8ToBoolMust(s []int8) []bool {
 	return ret
 }
 
+func Int8ToInterface(s []int8) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func Int16ToInt(s []int16) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -666,6 +730,30 @@ func Int16ToInt64Must(s []int16) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func Int16ToUint(s []int16) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func Int16ToUintMust(s []int16) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -866,6 +954,14 @@ func Int16ToBoolMust(s []int16) []bool {
 	return ret
 }
 
+func Int16ToInterface(s []int16) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func Int32ToInt(s []int32) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -954,6 +1050,30 @@ func Int32ToInt64Must(s []int32) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func Int32ToUint(s []int32) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func Int32ToUintMust(s []int32) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -1154,6 +1274,14 @@ func Int32ToBoolMust(s []int32) []bool {
 	return ret
 }
 
+func Int32ToInterface(s []int32) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func Int64ToInt(s []int64) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -1242,6 +1370,30 @@ func Int64ToInt32Must(s []int64) []int32 {
 	ret := make([]int32, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int32(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func Int64ToUint(s []int64) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func Int64ToUintMust(s []int64) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -1442,6 +1594,334 @@ func Int64ToBoolMust(s []int64) []bool {
 	return ret
 }
 
+func Int64ToInterface(s []int64) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
+func UintToInt(s []uint) ([]int, error) {
+	ret := make([]int, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Int(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToIntMust(s []uint) []int {
+	ret := make([]int, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Int(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToInt8(s []uint) ([]int8, error) {
+	ret := make([]int8, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Int8(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToInt8Must(s []uint) []int8 {
+	ret := make([]int8, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Int8(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToInt16(s []uint) ([]int16, error) {
+	ret := make([]int16, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Int16(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToInt16Must(s []uint) []int16 {
+	ret := make([]int16, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Int16(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToInt32(s []uint) ([]int32, error) {
+	ret := make([]int32, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Int32(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToInt32Must(s []uint) []int32 {
+	ret := make([]int32, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Int32(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToInt64(s []uint) ([]int64, error) {
+	ret := make([]int64, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToInt64Must(s []uint) []int64 {
+	ret := make([]int64, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToUint8(s []uint) ([]uint8, error) {
+	ret := make([]uint8, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint8(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToUint8Must(s []uint) []uint8 {
+	ret := make([]uint8, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint8(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToUint16(s []uint) ([]uint16, error) {
+	ret := make([]uint16, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint16(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToUint16Must(s []uint) []uint16 {
+	ret := make([]uint16, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint16(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToUint32(s []uint) ([]uint32, error) {
+	ret := make([]uint32, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint32(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToUint32Must(s []uint) []uint32 {
+	ret := make([]uint32, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint32(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToUint64(s []uint) ([]uint64, error) {
+	ret := make([]uint64, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint64(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToUint64Must(s []uint) []uint64 {
+	ret := make([]uint64, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToString(s []uint) ([]string, error) {
+	ret := make([]string, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.String(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToStringMust(s []uint) []string {
+	ret := make([]string, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.String(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToFloat32(s []uint) ([]float32, error) {
+	ret := make([]float32, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Float32(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToFloat32Must(s []uint) []float32 {
+	ret := make([]float32, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Float32(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToFloat64(s []uint) ([]float64, error) {
+	ret := make([]float64, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Float64(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToFloat64Must(s []uint) []float64 {
+	ret := make([]float64, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Float64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToBool(s []uint) ([]bool, error) {
+	ret := make([]bool, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Bool(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func UintToBoolMust(s []uint) []bool {
+	ret := make([]bool, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Bool(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func UintToInterface(s []uint) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func Uint8ToInt(s []uint8) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -1554,6 +2034,30 @@ func Uint8ToInt64Must(s []uint8) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func Uint8ToUint(s []uint8) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func Uint8ToUintMust(s []uint8) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -1730,6 +2234,14 @@ func Uint8ToBoolMust(s []uint8) []bool {
 	return ret
 }
 
+func Uint8ToInterface(s []uint8) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func Uint16ToInt(s []uint16) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -1842,6 +2354,30 @@ func Uint16ToInt64Must(s []uint16) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func Uint16ToUint(s []uint16) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func Uint16ToUintMust(s []uint16) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -2018,6 +2554,14 @@ func Uint16ToBoolMust(s []uint16) []bool {
 	return ret
 }
 
+func Uint16ToInterface(s []uint16) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func Uint32ToInt(s []uint32) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -2130,6 +2674,30 @@ func Uint32ToInt64Must(s []uint32) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func Uint32ToUint(s []uint32) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func Uint32ToUintMust(s []uint32) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -2306,6 +2874,14 @@ func Uint32ToBoolMust(s []uint32) []bool {
 	return ret
 }
 
+func Uint32ToInterface(s []uint32) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func Uint64ToInt(s []uint64) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -2418,6 +2994,30 @@ func Uint64ToInt64Must(s []uint64) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func Uint64ToUint(s []uint64) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func Uint64ToUintMust(s []uint64) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -2594,6 +3194,14 @@ func Uint64ToBoolMust(s []uint64) []bool {
 	return ret
 }
 
+func Uint64ToInterface(s []uint64) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func StringToInt(s []string) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -2706,6 +3314,30 @@ func StringToInt64Must(s []string) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func StringToUint(s []string) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func StringToUintMust(s []string) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -2882,6 +3514,14 @@ func StringToBoolMust(s []string) []bool {
 	return ret
 }
 
+func StringToInterface(s []string) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func Float32ToInt(s []float32) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -2994,6 +3634,30 @@ func Float32ToInt64Must(s []float32) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func Float32ToUint(s []float32) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func Float32ToUintMust(s []float32) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -3170,6 +3834,14 @@ func Float32ToBoolMust(s []float32) []bool {
 	return ret
 }
 
+func Float32ToInterface(s []float32) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func Float64ToInt(s []float64) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -3282,6 +3954,30 @@ func Float64ToInt64Must(s []float64) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func Float64ToUint(s []float64) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func Float64ToUintMust(s []float64) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -3458,6 +4154,14 @@ func Float64ToBoolMust(s []float64) []bool {
 	return ret
 }
 
+func Float64ToInterface(s []float64) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func BoolToInt(s []bool) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -3570,6 +4274,30 @@ func BoolToInt64Must(s []bool) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func BoolToUint(s []bool) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func BoolToUintMust(s []bool) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}
@@ -3746,6 +4474,14 @@ func BoolToFloat64Must(s []bool) []float64 {
 	return ret
 }
 
+func BoolToInterface(s []bool) []interface{} {
+	ret := make([]interface{}, 0, len(s))
+	for _, ele := range s {
+		ret = append(ret, ele)
+	}
+	return ret
+}
+
 func InterfaceToInt(s []interface{}) ([]int, error) {
 	ret := make([]int, 0, len(s))
 	for _, ele := range s {
@@ -3858,6 +4594,30 @@ func InterfaceToInt64Must(s []interface{}) []int64 {
 	ret := make([]int64, 0, len(s))
 	for _, ele := range s {
 		o, e := conv.Int64(ele)
+		if e != nil {
+			return nil
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}
+
+func InterfaceToUint(s []interface{}) ([]uint, error) {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
+		if e != nil {
+			return nil, e
+		}
+		ret = append(ret, o)
+	}
+	return ret, nil
+}
+
+func InterfaceToUintMust(s []interface{}) []uint {
+	ret := make([]uint, 0, len(s))
+	for _, ele := range s {
+		o, e := conv.Uint(ele)
 		if e != nil {
 			return nil
 		}

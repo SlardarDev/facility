@@ -1,6 +1,6 @@
 package slice
 
-import "github.com/lixi520/facility/set"
+import "github.com/SlardarDev/facility/set"
 
 func UniqueIntSlice(eles []int) []int {
 	s := set.IntSet{}
@@ -182,6 +182,42 @@ func EqualInt64SliceAsSet(a, b []int64) bool {
 
 }
 
+func UniqueUintSlice(eles []uint) []uint {
+	s := set.UintSet{}
+	s.AddAll(eles...)
+	return s.ToList()
+}
+
+func EqualUintSlice(a, b []uint) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	for idx, v := range a {
+		if b[idx] != v {
+			return false
+		}
+	}
+	return true
+}
+
+func EqualUintSliceAsSet(a, b []uint) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	if len(a) == 0 {
+		return true
+	}
+
+	sa := set.UintSet{}
+	sb := set.UintSet{}
+
+	sa.AddAll(a...)
+	sb.AddAll(b...)
+	return sa.Equal(sb)
+
+}
+
 func UniqueUint8Slice(eles []uint8) []uint8 {
 	s := set.Uint8Set{}
 	s.AddAll(eles...)
@@ -355,6 +391,54 @@ func EqualStringSliceAsSet(a, b []string) bool {
 
 	sa := set.StringSet{}
 	sb := set.StringSet{}
+
+	sa.AddAll(a...)
+	sb.AddAll(b...)
+	return sa.Equal(sb)
+
+}
+
+func UniqueFloat64Slice(eles []float64) []float64 {
+	s := set.Float64Set{}
+	s.AddAll(eles...)
+	return s.ToList()
+}
+
+func UniqueFloat32Slice(eles []float32) []float32 {
+	s := set.Float32Set{}
+	s.AddAll(eles...)
+	return s.ToList()
+}
+
+func UniqueBoolSlice(eles []bool) []bool {
+	s := set.BoolSet{}
+	s.AddAll(eles...)
+	return s.ToList()
+}
+
+func EqualBoolSlice(a, b []bool) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	for idx, v := range a {
+		if b[idx] != v {
+			return false
+		}
+	}
+	return true
+}
+
+func EqualBoolSliceAsSet(a, b []bool) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	if len(a) == 0 {
+		return true
+	}
+
+	sa := set.BoolSet{}
+	sb := set.BoolSet{}
 
 	sa.AddAll(a...)
 	sb.AddAll(b...)

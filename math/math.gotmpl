@@ -35,5 +35,52 @@ package math
         }
         return min
        }
-
+{{if (not  (eq $v "float64"))}}
+     func SliceAvg{{$v|Title}}(v ...{{$v}}) float64 {
+         var avg float64
+         if len(v) == 0{
+          return avg
+         }
+         for _, i := range v {
+             avg += float64(i)
+         }
+         return avg/float64(len(v))
+      }
+{{else}}
+    func SliceAvg{{$v|Title}}(v ...{{$v}}) float64 {
+         var avg float64
+         if len(v) == 0{
+          return avg
+         }
+         for _, i := range v {
+             avg += i
+         }
+         return avg/float64(len(v))
+     }
+{{end}}
+{{if (or  (eq $v "int") (eq $v "int8") (eq $v "int16") (eq $v "int32"))}}
+    func SliceSum{{$v|Title}}(v ...{{$v}}) int64 {
+        var sum int64
+        for _, i := range v {
+            sum += int64(i)
+        }
+        return sum
+    }
+{{else if (or  (eq $v "uint") (eq $v "uint8") (eq $v "uint16") (eq $v "uint32"))}}
+    func SliceSum{{$v|Title}}(v ...{{$v}}) uint64 {
+        var sum uint64
+        for _, i := range v {
+            sum += uint64(i)
+        }
+        return sum
+    }
+{{else}}
+    func SliceSum{{$v|Title}}(v ...{{$v}}) {{$v}} {
+        var sum {{$v}}
+        for _, i := range v {
+            sum += i
+        }
+        return sum
+    }
+{{end}}
 {{end}}

@@ -1,6 +1,6 @@
 package ternary
 
-import "github.com/lixi520/facility/set"
+import "github.com/SlardarDev/facility/set"
 
 func TernaryInt(condi bool, ifTrue int, ifFalse int) int {
 	if condi {
@@ -107,6 +107,27 @@ func TernaryInt64Set(condi bool, ifTrue set.Int64Set, ifFalse set.Int64Set) set.
 	return ifFalse
 }
 
+func TernaryUint(condi bool, ifTrue uint, ifFalse uint) uint {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryUintSlice(condi bool, ifTrue []uint, ifFalse []uint) []uint {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryUintSet(condi bool, ifTrue set.UintSet, ifFalse set.UintSet) set.UintSet {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
 func TernaryUint8(condi bool, ifTrue uint8, ifFalse uint8) uint8 {
 	if condi {
 		return ifTrue
@@ -206,6 +227,69 @@ func TernaryStringSlice(condi bool, ifTrue []string, ifFalse []string) []string 
 }
 
 func TernaryStringSet(condi bool, ifTrue set.StringSet, ifFalse set.StringSet) set.StringSet {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryFloat64(condi bool, ifTrue float64, ifFalse float64) float64 {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryFloat64Slice(condi bool, ifTrue []float64, ifFalse []float64) []float64 {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryFloat64Set(condi bool, ifTrue set.Float64Set, ifFalse set.Float64Set) set.Float64Set {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryFloat32(condi bool, ifTrue float32, ifFalse float32) float32 {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryFloat32Slice(condi bool, ifTrue []float32, ifFalse []float32) []float32 {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryFloat32Set(condi bool, ifTrue set.Float32Set, ifFalse set.Float32Set) set.Float32Set {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryBool(condi bool, ifTrue bool, ifFalse bool) bool {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryBoolSlice(condi bool, ifTrue []bool, ifFalse []bool) []bool {
+	if condi {
+		return ifTrue
+	}
+	return ifFalse
+}
+
+func TernaryBoolSet(condi bool, ifTrue set.BoolSet, ifFalse set.BoolSet) set.BoolSet {
 	if condi {
 		return ifTrue
 	}

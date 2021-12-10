@@ -1,6 +1,7 @@
 package ordermap
 
 var defaultInt int = 0
+var defaultUint uint = 0
 var defaultInt8 int8 = 0
 var defaultInt16 int16 = 0
 var defaultInt32 int32 = 0

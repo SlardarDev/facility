@@ -11,3 +11,15 @@ func {{$typeName|Title}}Contains(s []{{$typeName}}, e {{$typeName}}) bool {
     return false
 }
 {{end}}
+
+{{range $idx, $typeName := .interface}}
+
+func {{$typeName|Title}}Contains(s []{{$typeName}}{}, e {{$typeName}}{}) bool {
+    for _, d := range s {
+        if d == e {
+            return true
+        }
+    }
+    return false
+}
+{{end}}

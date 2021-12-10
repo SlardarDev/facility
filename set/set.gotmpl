@@ -115,4 +115,8 @@ func (s {{$className}}) Equal(s2 {{$className}}) bool {
     return true
 
 }
+
+func (s {{$className}}) Size() int {
+    return len(s)
+}
 {{end}}

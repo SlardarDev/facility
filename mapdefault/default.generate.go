@@ -50,6 +50,16 @@ func IntInt64(m map[int]int64, key int, defaultValue int64) int64 {
 	return defaultValue
 }
 
+func IntUint(m map[int]uint, key int, defaultValue uint) uint {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
 func IntUint8(m map[int]uint8, key int, defaultValue uint8) uint8 {
 	if m == nil {
 		return defaultValue
@@ -191,6 +201,16 @@ func Int8Int32(m map[int8]int32, key int8, defaultValue int32) int32 {
 }
 
 func Int8Int64(m map[int8]int64, key int8, defaultValue int64) int64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Int8Uint(m map[int8]uint, key int8, defaultValue uint) uint {
 	if m == nil {
 		return defaultValue
 	}
@@ -350,6 +370,16 @@ func Int16Int64(m map[int16]int64, key int16, defaultValue int64) int64 {
 	return defaultValue
 }
 
+func Int16Uint(m map[int16]uint, key int16, defaultValue uint) uint {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
 func Int16Uint8(m map[int16]uint8, key int16, defaultValue uint8) uint8 {
 	if m == nil {
 		return defaultValue
@@ -491,6 +521,16 @@ func Int32Int32(m map[int32]int32, key int32, defaultValue int32) int32 {
 }
 
 func Int32Int64(m map[int32]int64, key int32, defaultValue int64) int64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Int32Uint(m map[int32]uint, key int32, defaultValue uint) uint {
 	if m == nil {
 		return defaultValue
 	}
@@ -650,6 +690,16 @@ func Int64Int64(m map[int64]int64, key int64, defaultValue int64) int64 {
 	return defaultValue
 }
 
+func Int64Uint(m map[int64]uint, key int64, defaultValue uint) uint {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
 func Int64Uint8(m map[int64]uint8, key int64, defaultValue uint8) uint8 {
 	if m == nil {
 		return defaultValue
@@ -750,6 +800,166 @@ func Int64Struct(m map[int64]struct{}, key int64, defaultValue struct{}) struct{
 	return defaultValue
 }
 
+func UintInt(m map[uint]int, key uint, defaultValue int) int {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintInt8(m map[uint]int8, key uint, defaultValue int8) int8 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintInt16(m map[uint]int16, key uint, defaultValue int16) int16 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintInt32(m map[uint]int32, key uint, defaultValue int32) int32 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintInt64(m map[uint]int64, key uint, defaultValue int64) int64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintUint(m map[uint]uint, key uint, defaultValue uint) uint {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintUint8(m map[uint]uint8, key uint, defaultValue uint8) uint8 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintUint16(m map[uint]uint16, key uint, defaultValue uint16) uint16 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintUint32(m map[uint]uint32, key uint, defaultValue uint32) uint32 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintUint64(m map[uint]uint64, key uint, defaultValue uint64) uint64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintString(m map[uint]string, key uint, defaultValue string) string {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintFloat32(m map[uint]float32, key uint, defaultValue float32) float32 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintFloat64(m map[uint]float64, key uint, defaultValue float64) float64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintInterface(m map[uint]interface{}, key uint, defaultValue interface{}) interface{} {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintBool(m map[uint]bool, key uint, defaultValue bool) bool {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func UintStruct(m map[uint]struct{}, key uint, defaultValue struct{}) struct{} {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
 func Uint8Int(m map[uint8]int, key uint8, defaultValue int) int {
 	if m == nil {
 		return defaultValue
@@ -791,6 +1001,16 @@ func Uint8Int32(m map[uint8]int32, key uint8, defaultValue int32) int32 {
 }
 
 func Uint8Int64(m map[uint8]int64, key uint8, defaultValue int64) int64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Uint8Uint(m map[uint8]uint, key uint8, defaultValue uint) uint {
 	if m == nil {
 		return defaultValue
 	}
@@ -950,6 +1170,16 @@ func Uint16Int64(m map[uint16]int64, key uint16, defaultValue int64) int64 {
 	return defaultValue
 }
 
+func Uint16Uint(m map[uint16]uint, key uint16, defaultValue uint) uint {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
 func Uint16Uint8(m map[uint16]uint8, key uint16, defaultValue uint8) uint8 {
 	if m == nil {
 		return defaultValue
@@ -1091,6 +1321,16 @@ func Uint32Int32(m map[uint32]int32, key uint32, defaultValue int32) int32 {
 }
 
 func Uint32Int64(m map[uint32]int64, key uint32, defaultValue int64) int64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Uint32Uint(m map[uint32]uint, key uint32, defaultValue uint) uint {
 	if m == nil {
 		return defaultValue
 	}
@@ -1250,6 +1490,16 @@ func Uint64Int64(m map[uint64]int64, key uint64, defaultValue int64) int64 {
 	return defaultValue
 }
 
+func Uint64Uint(m map[uint64]uint, key uint64, defaultValue uint) uint {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
 func Uint64Uint8(m map[uint64]uint8, key uint64, defaultValue uint8) uint8 {
 	if m == nil {
 		return defaultValue
@@ -1350,6 +1600,326 @@ func Uint64Struct(m map[uint64]struct{}, key uint64, defaultValue struct{}) stru
 	return defaultValue
 }
 
+func Float64Int(m map[float64]int, key float64, defaultValue int) int {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Int8(m map[float64]int8, key float64, defaultValue int8) int8 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Int16(m map[float64]int16, key float64, defaultValue int16) int16 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Int32(m map[float64]int32, key float64, defaultValue int32) int32 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Int64(m map[float64]int64, key float64, defaultValue int64) int64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Uint(m map[float64]uint, key float64, defaultValue uint) uint {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Uint8(m map[float64]uint8, key float64, defaultValue uint8) uint8 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Uint16(m map[float64]uint16, key float64, defaultValue uint16) uint16 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Uint32(m map[float64]uint32, key float64, defaultValue uint32) uint32 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Uint64(m map[float64]uint64, key float64, defaultValue uint64) uint64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64String(m map[float64]string, key float64, defaultValue string) string {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Float32(m map[float64]float32, key float64, defaultValue float32) float32 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Float64(m map[float64]float64, key float64, defaultValue float64) float64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Interface(m map[float64]interface{}, key float64, defaultValue interface{}) interface{} {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Bool(m map[float64]bool, key float64, defaultValue bool) bool {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float64Struct(m map[float64]struct{}, key float64, defaultValue struct{}) struct{} {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Int(m map[float32]int, key float32, defaultValue int) int {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Int8(m map[float32]int8, key float32, defaultValue int8) int8 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Int16(m map[float32]int16, key float32, defaultValue int16) int16 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Int32(m map[float32]int32, key float32, defaultValue int32) int32 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Int64(m map[float32]int64, key float32, defaultValue int64) int64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Uint(m map[float32]uint, key float32, defaultValue uint) uint {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Uint8(m map[float32]uint8, key float32, defaultValue uint8) uint8 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Uint16(m map[float32]uint16, key float32, defaultValue uint16) uint16 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Uint32(m map[float32]uint32, key float32, defaultValue uint32) uint32 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Uint64(m map[float32]uint64, key float32, defaultValue uint64) uint64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32String(m map[float32]string, key float32, defaultValue string) string {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Float32(m map[float32]float32, key float32, defaultValue float32) float32 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Float64(m map[float32]float64, key float32, defaultValue float64) float64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Interface(m map[float32]interface{}, key float32, defaultValue interface{}) interface{} {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Bool(m map[float32]bool, key float32, defaultValue bool) bool {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func Float32Struct(m map[float32]struct{}, key float32, defaultValue struct{}) struct{} {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
 func StringInt(m map[string]int, key string, defaultValue int) int {
 	if m == nil {
 		return defaultValue
@@ -1391,6 +1961,16 @@ func StringInt32(m map[string]int32, key string, defaultValue int32) int32 {
 }
 
 func StringInt64(m map[string]int64, key string, defaultValue int64) int64 {
+	if m == nil {
+		return defaultValue
+	}
+	if v, ok := m[key]; ok {
+		return v
+	}
+	return defaultValue
+}
+
+func StringUint(m map[string]uint, key string, defaultValue uint) uint {
 	if m == nil {
 		return defaultValue
 	}

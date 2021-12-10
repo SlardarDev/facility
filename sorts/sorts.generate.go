@@ -162,6 +162,38 @@ func SearchInt64sRev(s1 []int64, s2 int64) int {
 	})
 }
 
+type uintSlice []uint
+
+func (p uintSlice) Len() int           { return len(p) }
+func (p uintSlice) Less(i, j int) bool { return p[i] < p[j] }
+func (p uintSlice) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+
+type uintSliceRev []uint
+
+func (p uintSliceRev) Len() int           { return len(p) }
+func (p uintSliceRev) Less(i, j int) bool { return p[i] > p[j] }
+func (p uintSliceRev) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+
+func Uints(s []uint) {
+	sort.Sort(uintSlice(s))
+}
+
+func UintsRev(s []uint) {
+	sort.Sort(uintSliceRev(s))
+}
+
+func SearchUints(s1 []uint, s2 uint) int {
+	return sort.Search(len(s1), func(i int) bool {
+		return s1[i] >= s2
+	})
+}
+
+func SearchUintsRev(s1 []uint, s2 uint) int {
+	return sort.Search(len(s1), func(i int) bool {
+		return s1[i] <= s2
+	})
+}
+
 type uint8Slice []uint8
 
 func (p uint8Slice) Len() int           { return len(p) }

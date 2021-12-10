@@ -1,8 +1,6 @@
 package assert
-import (
-"github.com/lixi520/facility/slice"
-"github.com/lixi520/facility/set"
-)
+import "github.com/SlardarDev/facility/slice"
+import "github.com/SlardarDev/facility/set"
 {{range $idx, $typeName := .types }}
 
 {{if not (or  (eq $typeName "float32") (eq $typeName "float64"))}}

@@ -1,6 +1,6 @@
 package ordermap
 
-import "github.com/lixi520/facility/sorts"
+import "github.com/SlardarDev/facility/sorts"
 
 func IntInt(a map[int]int) func() (int, int, bool) {
 	var keys []int
@@ -184,6 +184,44 @@ func IntInt64Rev(a map[int]int64) func() (int, int64, bool) {
 	return func() (int, int64, bool) {
 		if current >= len(keys) {
 			return defaultInt, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func IntUint(a map[int]uint) func() (int, uint, bool) {
+	var keys []int
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Ints(keys)
+	var current = 0
+	return func() (int, uint, bool) {
+		if current >= len(keys) {
+			return defaultInt, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func IntUintRev(a map[int]uint) func() (int, uint, bool) {
+
+	var keys []int
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.IntsRev(keys)
+	var current = 0
+	return func() (int, uint, bool) {
+		if current >= len(keys) {
+			return defaultInt, defaultUint, false
 		}
 		k, v := keys[current], a[keys[current]]
 		current = current + 1
@@ -762,6 +800,44 @@ func Int8Int64Rev(a map[int8]int64) func() (int8, int64, bool) {
 
 }
 
+func Int8Uint(a map[int8]uint) func() (int8, uint, bool) {
+	var keys []int8
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Int8s(keys)
+	var current = 0
+	return func() (int8, uint, bool) {
+		if current >= len(keys) {
+			return defaultInt8, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Int8UintRev(a map[int8]uint) func() (int8, uint, bool) {
+
+	var keys []int8
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Int8sRev(keys)
+	var current = 0
+	return func() (int8, uint, bool) {
+		if current >= len(keys) {
+			return defaultInt8, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
 func Int8Uint8(a map[int8]uint8) func() (int8, uint8, bool) {
 	var keys []int8
 	for k := range a {
@@ -1324,6 +1400,44 @@ func Int16Int64Rev(a map[int16]int64) func() (int16, int64, bool) {
 	return func() (int16, int64, bool) {
 		if current >= len(keys) {
 			return defaultInt16, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Int16Uint(a map[int16]uint) func() (int16, uint, bool) {
+	var keys []int16
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Int16s(keys)
+	var current = 0
+	return func() (int16, uint, bool) {
+		if current >= len(keys) {
+			return defaultInt16, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Int16UintRev(a map[int16]uint) func() (int16, uint, bool) {
+
+	var keys []int16
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Int16sRev(keys)
+	var current = 0
+	return func() (int16, uint, bool) {
+		if current >= len(keys) {
+			return defaultInt16, defaultUint, false
 		}
 		k, v := keys[current], a[keys[current]]
 		current = current + 1
@@ -1902,6 +2016,44 @@ func Int32Int64Rev(a map[int32]int64) func() (int32, int64, bool) {
 
 }
 
+func Int32Uint(a map[int32]uint) func() (int32, uint, bool) {
+	var keys []int32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Int32s(keys)
+	var current = 0
+	return func() (int32, uint, bool) {
+		if current >= len(keys) {
+			return defaultInt32, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Int32UintRev(a map[int32]uint) func() (int32, uint, bool) {
+
+	var keys []int32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Int32sRev(keys)
+	var current = 0
+	return func() (int32, uint, bool) {
+		if current >= len(keys) {
+			return defaultInt32, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
 func Int32Uint8(a map[int32]uint8) func() (int32, uint8, bool) {
 	var keys []int32
 	for k := range a {
@@ -2472,6 +2624,44 @@ func Int64Int64Rev(a map[int64]int64) func() (int64, int64, bool) {
 
 }
 
+func Int64Uint(a map[int64]uint) func() (int64, uint, bool) {
+	var keys []int64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Int64s(keys)
+	var current = 0
+	return func() (int64, uint, bool) {
+		if current >= len(keys) {
+			return defaultInt64, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Int64UintRev(a map[int64]uint) func() (int64, uint, bool) {
+
+	var keys []int64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Int64sRev(keys)
+	var current = 0
+	return func() (int64, uint, bool) {
+		if current >= len(keys) {
+			return defaultInt64, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
 func Int64Uint8(a map[int64]uint8) func() (int64, uint8, bool) {
 	var keys []int64
 	for k := range a {
@@ -2852,6 +3042,614 @@ func Int64StructRev(a map[int64]struct{}) func() (int64, struct{}, bool) {
 
 }
 
+func UintInt(a map[uint]int) func() (uint, int, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, int, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInt, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintIntRev(a map[uint]int) func() (uint, int, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, int, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInt, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintInt8(a map[uint]int8) func() (uint, int8, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, int8, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInt8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintInt8Rev(a map[uint]int8) func() (uint, int8, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, int8, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInt8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintInt16(a map[uint]int16) func() (uint, int16, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, int16, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInt16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintInt16Rev(a map[uint]int16) func() (uint, int16, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, int16, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInt16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintInt32(a map[uint]int32) func() (uint, int32, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, int32, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInt32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintInt32Rev(a map[uint]int32) func() (uint, int32, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, int32, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInt32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintInt64(a map[uint]int64) func() (uint, int64, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, int64, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintInt64Rev(a map[uint]int64) func() (uint, int64, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, int64, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintUint(a map[uint]uint) func() (uint, uint, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, uint, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintUintRev(a map[uint]uint) func() (uint, uint, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, uint, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintUint8(a map[uint]uint8) func() (uint, uint8, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, uint8, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultUint8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintUint8Rev(a map[uint]uint8) func() (uint, uint8, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, uint8, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultUint8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintUint16(a map[uint]uint16) func() (uint, uint16, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, uint16, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultUint16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintUint16Rev(a map[uint]uint16) func() (uint, uint16, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, uint16, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultUint16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintUint32(a map[uint]uint32) func() (uint, uint32, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, uint32, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultUint32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintUint32Rev(a map[uint]uint32) func() (uint, uint32, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, uint32, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultUint32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintUint64(a map[uint]uint64) func() (uint, uint64, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, uint64, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultUint64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintUint64Rev(a map[uint]uint64) func() (uint, uint64, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, uint64, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultUint64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintString(a map[uint]string) func() (uint, string, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, string, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultString, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintStringRev(a map[uint]string) func() (uint, string, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, string, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultString, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintFloat32(a map[uint]float32) func() (uint, float32, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, float32, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultFloat32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintFloat32Rev(a map[uint]float32) func() (uint, float32, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, float32, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultFloat32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintFloat64(a map[uint]float64) func() (uint, float64, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, float64, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultFloat64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintFloat64Rev(a map[uint]float64) func() (uint, float64, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, float64, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultFloat64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintInterface(a map[uint]interface{}) func() (uint, interface{}, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, interface{}, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInterface, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintInterfaceRev(a map[uint]interface{}) func() (uint, interface{}, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, interface{}, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultInterface, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintBool(a map[uint]bool) func() (uint, bool, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, bool, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultBool, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintBoolRev(a map[uint]bool) func() (uint, bool, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, bool, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultBool, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func UintStruct(a map[uint]struct{}) func() (uint, struct{}, bool) {
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uints(keys)
+	var current = 0
+	return func() (uint, struct{}, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultStruct, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func UintStructRev(a map[uint]struct{}) func() (uint, struct{}, bool) {
+
+	var keys []uint
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.UintsRev(keys)
+	var current = 0
+	return func() (uint, struct{}, bool) {
+		if current >= len(keys) {
+			return defaultUint, defaultStruct, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
 func Uint8Int(a map[uint8]int) func() (uint8, int, bool) {
 	var keys []uint8
 	for k := range a {
@@ -3034,6 +3832,44 @@ func Uint8Int64Rev(a map[uint8]int64) func() (uint8, int64, bool) {
 	return func() (uint8, int64, bool) {
 		if current >= len(keys) {
 			return defaultUint8, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Uint8Uint(a map[uint8]uint) func() (uint8, uint, bool) {
+	var keys []uint8
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uint8s(keys)
+	var current = 0
+	return func() (uint8, uint, bool) {
+		if current >= len(keys) {
+			return defaultUint8, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Uint8UintRev(a map[uint8]uint) func() (uint8, uint, bool) {
+
+	var keys []uint8
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uint8sRev(keys)
+	var current = 0
+	return func() (uint8, uint, bool) {
+		if current >= len(keys) {
+			return defaultUint8, defaultUint, false
 		}
 		k, v := keys[current], a[keys[current]]
 		current = current + 1
@@ -3612,6 +4448,44 @@ func Uint16Int64Rev(a map[uint16]int64) func() (uint16, int64, bool) {
 
 }
 
+func Uint16Uint(a map[uint16]uint) func() (uint16, uint, bool) {
+	var keys []uint16
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uint16s(keys)
+	var current = 0
+	return func() (uint16, uint, bool) {
+		if current >= len(keys) {
+			return defaultUint16, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Uint16UintRev(a map[uint16]uint) func() (uint16, uint, bool) {
+
+	var keys []uint16
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uint16sRev(keys)
+	var current = 0
+	return func() (uint16, uint, bool) {
+		if current >= len(keys) {
+			return defaultUint16, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
 func Uint16Uint8(a map[uint16]uint8) func() (uint16, uint8, bool) {
 	var keys []uint16
 	for k := range a {
@@ -4174,6 +5048,44 @@ func Uint32Int64Rev(a map[uint32]int64) func() (uint32, int64, bool) {
 	return func() (uint32, int64, bool) {
 		if current >= len(keys) {
 			return defaultUint32, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Uint32Uint(a map[uint32]uint) func() (uint32, uint, bool) {
+	var keys []uint32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uint32s(keys)
+	var current = 0
+	return func() (uint32, uint, bool) {
+		if current >= len(keys) {
+			return defaultUint32, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Uint32UintRev(a map[uint32]uint) func() (uint32, uint, bool) {
+
+	var keys []uint32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uint32sRev(keys)
+	var current = 0
+	return func() (uint32, uint, bool) {
+		if current >= len(keys) {
+			return defaultUint32, defaultUint, false
 		}
 		k, v := keys[current], a[keys[current]]
 		current = current + 1
@@ -4752,6 +5664,44 @@ func Uint64Int64Rev(a map[uint64]int64) func() (uint64, int64, bool) {
 
 }
 
+func Uint64Uint(a map[uint64]uint) func() (uint64, uint, bool) {
+	var keys []uint64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uint64s(keys)
+	var current = 0
+	return func() (uint64, uint, bool) {
+		if current >= len(keys) {
+			return defaultUint64, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Uint64UintRev(a map[uint64]uint) func() (uint64, uint, bool) {
+
+	var keys []uint64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Uint64sRev(keys)
+	var current = 0
+	return func() (uint64, uint, bool) {
+		if current >= len(keys) {
+			return defaultUint64, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
 func Uint64Uint8(a map[uint64]uint8) func() (uint64, uint8, bool) {
 	var keys []uint64
 	for k := range a {
@@ -5132,6 +6082,1222 @@ func Uint64StructRev(a map[uint64]struct{}) func() (uint64, struct{}, bool) {
 
 }
 
+func Float64Int(a map[float64]int) func() (float64, int, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, int, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInt, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64IntRev(a map[float64]int) func() (float64, int, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, int, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInt, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Int8(a map[float64]int8) func() (float64, int8, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, int8, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInt8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64Int8Rev(a map[float64]int8) func() (float64, int8, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, int8, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInt8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Int16(a map[float64]int16) func() (float64, int16, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, int16, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInt16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64Int16Rev(a map[float64]int16) func() (float64, int16, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, int16, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInt16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Int32(a map[float64]int32) func() (float64, int32, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, int32, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInt32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64Int32Rev(a map[float64]int32) func() (float64, int32, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, int32, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInt32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Int64(a map[float64]int64) func() (float64, int64, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, int64, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64Int64Rev(a map[float64]int64) func() (float64, int64, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, int64, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Uint(a map[float64]uint) func() (float64, uint, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, uint, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64UintRev(a map[float64]uint) func() (float64, uint, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, uint, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Uint8(a map[float64]uint8) func() (float64, uint8, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, uint8, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultUint8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64Uint8Rev(a map[float64]uint8) func() (float64, uint8, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, uint8, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultUint8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Uint16(a map[float64]uint16) func() (float64, uint16, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, uint16, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultUint16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64Uint16Rev(a map[float64]uint16) func() (float64, uint16, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, uint16, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultUint16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Uint32(a map[float64]uint32) func() (float64, uint32, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, uint32, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultUint32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64Uint32Rev(a map[float64]uint32) func() (float64, uint32, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, uint32, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultUint32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Uint64(a map[float64]uint64) func() (float64, uint64, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, uint64, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultUint64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64Uint64Rev(a map[float64]uint64) func() (float64, uint64, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, uint64, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultUint64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64String(a map[float64]string) func() (float64, string, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, string, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultString, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64StringRev(a map[float64]string) func() (float64, string, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, string, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultString, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Float32(a map[float64]float32) func() (float64, float32, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, float32, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultFloat32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64Float32Rev(a map[float64]float32) func() (float64, float32, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, float32, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultFloat32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Float64(a map[float64]float64) func() (float64, float64, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, float64, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultFloat64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64Float64Rev(a map[float64]float64) func() (float64, float64, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, float64, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultFloat64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Interface(a map[float64]interface{}) func() (float64, interface{}, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, interface{}, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInterface, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64InterfaceRev(a map[float64]interface{}) func() (float64, interface{}, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, interface{}, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultInterface, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Bool(a map[float64]bool) func() (float64, bool, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, bool, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultBool, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64BoolRev(a map[float64]bool) func() (float64, bool, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, bool, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultBool, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float64Struct(a map[float64]struct{}) func() (float64, struct{}, bool) {
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64s(keys)
+	var current = 0
+	return func() (float64, struct{}, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultStruct, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float64StructRev(a map[float64]struct{}) func() (float64, struct{}, bool) {
+
+	var keys []float64
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float64sRev(keys)
+	var current = 0
+	return func() (float64, struct{}, bool) {
+		if current >= len(keys) {
+			return defaultFloat64, defaultStruct, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Int(a map[float32]int) func() (float32, int, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, int, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInt, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32IntRev(a map[float32]int) func() (float32, int, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, int, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInt, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Int8(a map[float32]int8) func() (float32, int8, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, int8, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInt8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32Int8Rev(a map[float32]int8) func() (float32, int8, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, int8, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInt8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Int16(a map[float32]int16) func() (float32, int16, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, int16, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInt16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32Int16Rev(a map[float32]int16) func() (float32, int16, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, int16, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInt16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Int32(a map[float32]int32) func() (float32, int32, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, int32, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInt32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32Int32Rev(a map[float32]int32) func() (float32, int32, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, int32, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInt32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Int64(a map[float32]int64) func() (float32, int64, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, int64, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32Int64Rev(a map[float32]int64) func() (float32, int64, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, int64, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Uint(a map[float32]uint) func() (float32, uint, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, uint, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32UintRev(a map[float32]uint) func() (float32, uint, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, uint, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Uint8(a map[float32]uint8) func() (float32, uint8, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, uint8, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultUint8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32Uint8Rev(a map[float32]uint8) func() (float32, uint8, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, uint8, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultUint8, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Uint16(a map[float32]uint16) func() (float32, uint16, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, uint16, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultUint16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32Uint16Rev(a map[float32]uint16) func() (float32, uint16, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, uint16, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultUint16, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Uint32(a map[float32]uint32) func() (float32, uint32, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, uint32, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultUint32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32Uint32Rev(a map[float32]uint32) func() (float32, uint32, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, uint32, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultUint32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Uint64(a map[float32]uint64) func() (float32, uint64, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, uint64, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultUint64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32Uint64Rev(a map[float32]uint64) func() (float32, uint64, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, uint64, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultUint64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32String(a map[float32]string) func() (float32, string, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, string, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultString, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32StringRev(a map[float32]string) func() (float32, string, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, string, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultString, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Float32(a map[float32]float32) func() (float32, float32, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, float32, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultFloat32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32Float32Rev(a map[float32]float32) func() (float32, float32, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, float32, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultFloat32, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Float64(a map[float32]float64) func() (float32, float64, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, float64, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultFloat64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32Float64Rev(a map[float32]float64) func() (float32, float64, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, float64, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultFloat64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Interface(a map[float32]interface{}) func() (float32, interface{}, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, interface{}, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInterface, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32InterfaceRev(a map[float32]interface{}) func() (float32, interface{}, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, interface{}, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultInterface, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Bool(a map[float32]bool) func() (float32, bool, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, bool, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultBool, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32BoolRev(a map[float32]bool) func() (float32, bool, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, bool, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultBool, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func Float32Struct(a map[float32]struct{}) func() (float32, struct{}, bool) {
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32s(keys)
+	var current = 0
+	return func() (float32, struct{}, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultStruct, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func Float32StructRev(a map[float32]struct{}) func() (float32, struct{}, bool) {
+
+	var keys []float32
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Float32sRev(keys)
+	var current = 0
+	return func() (float32, struct{}, bool) {
+		if current >= len(keys) {
+			return defaultFloat32, defaultStruct, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
 func StringInt(a map[string]int) func() (string, int, bool) {
 	var keys []string
 	for k := range a {
@@ -5314,6 +7480,44 @@ func StringInt64Rev(a map[string]int64) func() (string, int64, bool) {
 	return func() (string, int64, bool) {
 		if current >= len(keys) {
 			return defaultString, defaultInt64, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+
+}
+
+func StringUint(a map[string]uint) func() (string, uint, bool) {
+	var keys []string
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.Strings(keys)
+	var current = 0
+	return func() (string, uint, bool) {
+		if current >= len(keys) {
+			return defaultString, defaultUint, false
+		}
+		k, v := keys[current], a[keys[current]]
+		current = current + 1
+		return k, v, true
+	}
+}
+
+func StringUintRev(a map[string]uint) func() (string, uint, bool) {
+
+	var keys []string
+	for k := range a {
+		keys = append(keys, k)
+	}
+
+	sorts.StringsRev(keys)
+	var current = 0
+	return func() (string, uint, bool) {
+		if current >= len(keys) {
+			return defaultString, defaultUint, false
 		}
 		k, v := keys[current], a[keys[current]]
 		current = current + 1

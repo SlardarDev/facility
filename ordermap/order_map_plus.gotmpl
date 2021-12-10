@@ -1,0 +1,120 @@
+package ordermap
+
+import "github.com/SlardarDev/facility/sorts"
+{{$keyTypes := .keyTypes}}
+{{$valueTypes := .valueTypes}}
+
+{{range $idx, $keyType := $keyTypes}}
+{{range $idx2, $vType := $valueTypes}}
+
+{{$vTypeNameTmp := (Replace $vType "{}"  "" -1)}}
+{{$vTypeName := (Replace $vTypeNameTmp "[]"  "slice" -1)}}
+
+type {{$keyType|Title}}{{$vTypeName|Title}}Map struct {
+    store map[{{$keyType}}]{{$vType}}
+    mapper []{{$keyType}}
+    isWrite bool
+}
+
+func New{{$keyType|Title}}{{$vTypeName|Title}}Map() *{{$keyType|Title}}{{$vTypeName|Title}}Map {
+    om := &{{$keyType|Title}}{{$vTypeName|Title}}Map{
+        store:  make(map[{{$keyType}}]{{$vType}}),
+        mapper: make([]{{$keyType}}, 0),
+        isWrite: false,
+    }
+    return om
+}
+
+func New{{$keyType|Title}}{{$vTypeName|Title}}MapAllocSpace(size int) *{{$keyType|Title}}{{$vTypeName|Title}}Map {
+    om := &{{$keyType|Title}}{{$vTypeName|Title}}Map{
+        store:  make(map[{{$keyType}}]{{$vType}}, size),
+        mapper: make([]{{$keyType}}, 0, size),
+        isWrite: false,
+    }
+    return om
+}
+
+func (om *{{$keyType|Title}}{{$vTypeName|Title}}Map) Set(key {{$keyType}}, value {{$vType}}) {
+    if _, ok := om.store[key]; !ok {
+        om.mapper = append(om.mapper, key)
+    }
+    om.store[key] = value
+    om.isWrite = true
+}
+
+func (om *{{$keyType|Title}}{{$vTypeName|Title}}Map) Get(key {{$keyType}}) ({{$vType}}, bool) {
+	val, ok := om.store[key]
+	return val, ok
+}
+
+func (om *{{$keyType|Title}}{{$vTypeName|Title}}Map) Delete(key {{$keyType}}) {
+	if _, ok := om.store[key]; ok {
+		delete(om.store, key)
+		om.isWrite = true
+
+		idx := -1
+		for i, k := range om.mapper {
+			if k == key {
+				idx = i
+				break
+			}
+		}
+		if idx >= 0 {
+			om.mapper = append(om.mapper[:idx], om.mapper[idx+1:]...)
+		}
+	}
+}
+
+func (om *{{$keyType|Title}}{{$vTypeName|Title}}Map) Len() int {
+	return len(om.store)
+}
+
+func (om *{{$keyType|Title}}{{$vTypeName|Title}}Map) IterFunc() func() ({{$vType}}, bool) {
+	index := 0
+	om.isWrite = false
+	return func() (val {{$vType}}, ok bool) {
+		if index >= len(om.mapper) || om.isWrite {
+			return
+		}
+		val, ok = om.store[om.mapper[index]]
+		index++
+		return
+	}
+}
+
+func (om *{{$keyType|Title}}{{$vTypeName|Title}}Map) IterFuncAsc() func() ({{$vType}}, bool) {
+	ascMapper := make([]{{$keyType}}, len(om.mapper))
+	copy(ascMapper, om.mapper)
+	sorts.{{$keyType|Title}}s(ascMapper)
+	index := 0
+	om.isWrite = false
+	return func() (val {{$vType}}, ok bool) {
+		if index >= len(ascMapper) || om.isWrite {
+			return
+		}
+		val, ok = om.store[ascMapper[index]]
+		index++
+		return
+	}
+}
+
+func (om *{{$keyType|Title}}{{$vTypeName|Title}}Map) IterFuncDesc() func() ({{$vType}}, bool) {
+	dscMapper := make([]{{$keyType}}, len(om.mapper))
+	copy(dscMapper, om.mapper)
+	sorts.{{$keyType|Title}}sRev(dscMapper)
+	index := 0
+	om.isWrite = false
+	return func() (val {{$vType}}, ok bool) {
+		if index >= len(dscMapper) || om.isWrite {
+			return
+		}
+		val, ok = om.store[dscMapper[index]]
+		index++
+		return
+	}
+}
+
+{{end}}
+{{end}}
+
+

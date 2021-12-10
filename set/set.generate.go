@@ -108,6 +108,10 @@ func (s IntSet) Equal(s2 IntSet) bool {
 
 }
 
+func (s IntSet) Size() int {
+	return len(s)
+}
+
 type Int8Set map[int8]struct{}
 
 func (s Int8Set) Exist(key int8) bool {
@@ -214,6 +218,10 @@ func (s Int8Set) Equal(s2 Int8Set) bool {
 
 	return true
 
+}
+
+func (s Int8Set) Size() int {
+	return len(s)
 }
 
 type Int16Set map[int16]struct{}
@@ -324,6 +332,10 @@ func (s Int16Set) Equal(s2 Int16Set) bool {
 
 }
 
+func (s Int16Set) Size() int {
+	return len(s)
+}
+
 type Int32Set map[int32]struct{}
 
 func (s Int32Set) Exist(key int32) bool {
@@ -430,6 +442,10 @@ func (s Int32Set) Equal(s2 Int32Set) bool {
 
 	return true
 
+}
+
+func (s Int32Set) Size() int {
+	return len(s)
 }
 
 type Int64Set map[int64]struct{}
@@ -540,6 +556,122 @@ func (s Int64Set) Equal(s2 Int64Set) bool {
 
 }
 
+func (s Int64Set) Size() int {
+	return len(s)
+}
+
+type UintSet map[uint]struct{}
+
+func (s UintSet) Exist(key uint) bool {
+	if s == nil {
+		return false
+	}
+	_, ok := s[key]
+	return ok
+}
+
+func NewUintSet(keys ...uint) UintSet {
+	s := UintSet{}
+	for _, k := range keys {
+		s[k] = struct{}{}
+	}
+	return s
+}
+
+func (s UintSet) Add(key uint) {
+	s[key] = struct{}{}
+}
+
+func (s UintSet) AddAll(keys ...uint) {
+	if len(keys) > 0 {
+		for _, key := range keys {
+			s[key] = struct{}{}
+		}
+	}
+
+}
+
+func (s UintSet) Remove(key uint) {
+	delete(s, key)
+}
+
+func (s UintSet) Contains(key uint) bool {
+	if s == nil {
+		return false
+	}
+	_, exist := s[key]
+	return exist
+}
+
+func (s UintSet) ToList() []uint {
+	var ret []uint
+
+	for k := range s {
+		ret = append(ret, k)
+	}
+	return ret
+}
+
+func (s UintSet) Intersect(s2 UintSet) UintSet {
+	newSet := UintSet{}
+	for ele := range s {
+		if s2.Contains(ele) {
+			newSet.Add(ele)
+		}
+	}
+	return newSet
+}
+
+func (s UintSet) Union(s2 UintSet) UintSet {
+	newSet := UintSet{}
+	for ele := range s {
+		newSet.Add(ele)
+	}
+	for ele := range s2 {
+		newSet.Add(ele)
+	}
+	return newSet
+}
+
+func (s UintSet) Minus(s2 UintSet) UintSet {
+	newSet := UintSet{}
+	for ele := range s {
+		if !s2.Contains(ele) {
+			newSet.Add(ele)
+		}
+	}
+	return newSet
+}
+
+func (s UintSet) MinusInPlace(s2 UintSet) {
+	for ele := range s2 {
+		s.Remove(ele)
+	}
+}
+
+func (s UintSet) IsEmpty() bool {
+	return len(s) == 0
+}
+
+func (s UintSet) Equal(s2 UintSet) bool {
+	if len(s) != len(s2) {
+		return false
+	}
+
+	for ele := range s {
+		if !s2.Contains(ele) {
+			return false
+		}
+	}
+
+	return true
+
+}
+
+func (s UintSet) Size() int {
+	return len(s)
+}
+
 type Uint8Set map[uint8]struct{}
 
 func (s Uint8Set) Exist(key uint8) bool {
@@ -646,6 +778,10 @@ func (s Uint8Set) Equal(s2 Uint8Set) bool {
 
 	return true
 
+}
+
+func (s Uint8Set) Size() int {
+	return len(s)
 }
 
 type Uint16Set map[uint16]struct{}
@@ -756,6 +892,10 @@ func (s Uint16Set) Equal(s2 Uint16Set) bool {
 
 }
 
+func (s Uint16Set) Size() int {
+	return len(s)
+}
+
 type Uint32Set map[uint32]struct{}
 
 func (s Uint32Set) Exist(key uint32) bool {
@@ -862,6 +1002,10 @@ func (s Uint32Set) Equal(s2 Uint32Set) bool {
 
 	return true
 
+}
+
+func (s Uint32Set) Size() int {
+	return len(s)
 }
 
 type Uint64Set map[uint64]struct{}
@@ -972,6 +1116,10 @@ func (s Uint64Set) Equal(s2 Uint64Set) bool {
 
 }
 
+func (s Uint64Set) Size() int {
+	return len(s)
+}
+
 type StringSet map[string]struct{}
 
 func (s StringSet) Exist(key string) bool {
@@ -1078,4 +1226,344 @@ func (s StringSet) Equal(s2 StringSet) bool {
 
 	return true
 
+}
+
+func (s StringSet) Size() int {
+	return len(s)
+}
+
+type Float64Set map[float64]struct{}
+
+func (s Float64Set) Exist(key float64) bool {
+	if s == nil {
+		return false
+	}
+	_, ok := s[key]
+	return ok
+}
+
+func NewFloat64Set(keys ...float64) Float64Set {
+	s := Float64Set{}
+	for _, k := range keys {
+		s[k] = struct{}{}
+	}
+	return s
+}
+
+func (s Float64Set) Add(key float64) {
+	s[key] = struct{}{}
+}
+
+func (s Float64Set) AddAll(keys ...float64) {
+	if len(keys) > 0 {
+		for _, key := range keys {
+			s[key] = struct{}{}
+		}
+	}
+
+}
+
+func (s Float64Set) Remove(key float64) {
+	delete(s, key)
+}
+
+func (s Float64Set) Contains(key float64) bool {
+	if s == nil {
+		return false
+	}
+	_, exist := s[key]
+	return exist
+}
+
+func (s Float64Set) ToList() []float64 {
+	var ret []float64
+
+	for k := range s {
+		ret = append(ret, k)
+	}
+	return ret
+}
+
+func (s Float64Set) Intersect(s2 Float64Set) Float64Set {
+	newSet := Float64Set{}
+	for ele := range s {
+		if s2.Contains(ele) {
+			newSet.Add(ele)
+		}
+	}
+	return newSet
+}
+
+func (s Float64Set) Union(s2 Float64Set) Float64Set {
+	newSet := Float64Set{}
+	for ele := range s {
+		newSet.Add(ele)
+	}
+	for ele := range s2 {
+		newSet.Add(ele)
+	}
+	return newSet
+}
+
+func (s Float64Set) Minus(s2 Float64Set) Float64Set {
+	newSet := Float64Set{}
+	for ele := range s {
+		if !s2.Contains(ele) {
+			newSet.Add(ele)
+		}
+	}
+	return newSet
+}
+
+func (s Float64Set) MinusInPlace(s2 Float64Set) {
+	for ele := range s2 {
+		s.Remove(ele)
+	}
+}
+
+func (s Float64Set) IsEmpty() bool {
+	return len(s) == 0
+}
+
+func (s Float64Set) Equal(s2 Float64Set) bool {
+	if len(s) != len(s2) {
+		return false
+	}
+
+	for ele := range s {
+		if !s2.Contains(ele) {
+			return false
+		}
+	}
+
+	return true
+
+}
+
+func (s Float64Set) Size() int {
+	return len(s)
+}
+
+type Float32Set map[float32]struct{}
+
+func (s Float32Set) Exist(key float32) bool {
+	if s == nil {
+		return false
+	}
+	_, ok := s[key]
+	return ok
+}
+
+func NewFloat32Set(keys ...float32) Float32Set {
+	s := Float32Set{}
+	for _, k := range keys {
+		s[k] = struct{}{}
+	}
+	return s
+}
+
+func (s Float32Set) Add(key float32) {
+	s[key] = struct{}{}
+}
+
+func (s Float32Set) AddAll(keys ...float32) {
+	if len(keys) > 0 {
+		for _, key := range keys {
+			s[key] = struct{}{}
+		}
+	}
+
+}
+
+func (s Float32Set) Remove(key float32) {
+	delete(s, key)
+}
+
+func (s Float32Set) Contains(key float32) bool {
+	if s == nil {
+		return false
+	}
+	_, exist := s[key]
+	return exist
+}
+
+func (s Float32Set) ToList() []float32 {
+	var ret []float32
+
+	for k := range s {
+		ret = append(ret, k)
+	}
+	return ret
+}
+
+func (s Float32Set) Intersect(s2 Float32Set) Float32Set {
+	newSet := Float32Set{}
+	for ele := range s {
+		if s2.Contains(ele) {
+			newSet.Add(ele)
+		}
+	}
+	return newSet
+}
+
+func (s Float32Set) Union(s2 Float32Set) Float32Set {
+	newSet := Float32Set{}
+	for ele := range s {
+		newSet.Add(ele)
+	}
+	for ele := range s2 {
+		newSet.Add(ele)
+	}
+	return newSet
+}
+
+func (s Float32Set) Minus(s2 Float32Set) Float32Set {
+	newSet := Float32Set{}
+	for ele := range s {
+		if !s2.Contains(ele) {
+			newSet.Add(ele)
+		}
+	}
+	return newSet
+}
+
+func (s Float32Set) MinusInPlace(s2 Float32Set) {
+	for ele := range s2 {
+		s.Remove(ele)
+	}
+}
+
+func (s Float32Set) IsEmpty() bool {
+	return len(s) == 0
+}
+
+func (s Float32Set) Equal(s2 Float32Set) bool {
+	if len(s) != len(s2) {
+		return false
+	}
+
+	for ele := range s {
+		if !s2.Contains(ele) {
+			return false
+		}
+	}
+
+	return true
+
+}
+
+func (s Float32Set) Size() int {
+	return len(s)
+}
+
+type BoolSet map[bool]struct{}
+
+func (s BoolSet) Exist(key bool) bool {
+	if s == nil {
+		return false
+	}
+	_, ok := s[key]
+	return ok
+}
+
+func NewBoolSet(keys ...bool) BoolSet {
+	s := BoolSet{}
+	for _, k := range keys {
+		s[k] = struct{}{}
+	}
+	return s
+}
+
+func (s BoolSet) Add(key bool) {
+	s[key] = struct{}{}
+}
+
+func (s BoolSet) AddAll(keys ...bool) {
+	if len(keys) > 0 {
+		for _, key := range keys {
+			s[key] = struct{}{}
+		}
+	}
+
+}
+
+func (s BoolSet) Remove(key bool) {
+	delete(s, key)
+}
+
+func (s BoolSet) Contains(key bool) bool {
+	if s == nil {
+		return false
+	}
+	_, exist := s[key]
+	return exist
+}
+
+func (s BoolSet) ToList() []bool {
+	var ret []bool
+
+	for k := range s {
+		ret = append(ret, k)
+	}
+	return ret
+}
+
+func (s BoolSet) Intersect(s2 BoolSet) BoolSet {
+	newSet := BoolSet{}
+	for ele := range s {
+		if s2.Contains(ele) {
+			newSet.Add(ele)
+		}
+	}
+	return newSet
+}
+
+func (s BoolSet) Union(s2 BoolSet) BoolSet {
+	newSet := BoolSet{}
+	for ele := range s {
+		newSet.Add(ele)
+	}
+	for ele := range s2 {
+		newSet.Add(ele)
+	}
+	return newSet
+}
+
+func (s BoolSet) Minus(s2 BoolSet) BoolSet {
+	newSet := BoolSet{}
+	for ele := range s {
+		if !s2.Contains(ele) {
+			newSet.Add(ele)
+		}
+	}
+	return newSet
+}
+
+func (s BoolSet) MinusInPlace(s2 BoolSet) {
+	for ele := range s2 {
+		s.Remove(ele)
+	}
+}
+
+func (s BoolSet) IsEmpty() bool {
+	return len(s) == 0
+}
+
+func (s BoolSet) Equal(s2 BoolSet) bool {
+	if len(s) != len(s2) {
+		return false
+	}
+
+	for ele := range s {
+		if !s2.Contains(ele) {
+			return false
+		}
+	}
+
+	return true
+
+}
+
+func (s BoolSet) Size() int {
+	return len(s)
 }

@@ -1,6 +1,6 @@
 package slice
 
-import "github.com/cstockton/go-conv"
+import "github.com/SlardarDev/facility/conv"
 
 {{$keyTypes := .keyTypes}}
 {{$valueTypes := .valueTypes}}
@@ -11,6 +11,13 @@ import "github.com/cstockton/go-conv"
 
 {{if not (eq $k $v)}}
 {{if (eq $v "interface")}}
+func {{Concat ($k|Title) "To" ($v|Title)}}(s []{{$k}}) []{{$v}}{} {
+        ret := make([]{{$v}}{}, 0, len(s))
+        for _, ele := range s {
+       		ret = append(ret, ele)
+       	}
+       	return ret
+}
 {{else if (eq $k "interface")}}
 func {{Concat ($k|Title) "To" ($v|Title)}}(s []{{$k}}{}) ([]{{$v}}, error) {
         ret := make([]{{$v}}, 0, len(s))

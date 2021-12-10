@@ -23,6 +23,7 @@ const (
 	LimitsMaxInt8   int8   = 1<<7 - 1
 	LimitsMaxInt16  int16  = 1<<15 - 1
 	LimitsMaxInt    int    = 1<<(_W-1) - 1
+	LimitsMaxUint   uint   = 1<<(_W) - 1
 	LimitsMaxUint8  uint8  = 1<<8 - 1
 	LimitsMaxUint32 uint32 = 1<<32 - 1
 	LimitsMaxUint64 uint64 = 1<<64 - 1
@@ -33,6 +34,7 @@ const (
 	LimitsMinInt16  int16  = -1 << 15
 	LimitsMinInt    int    = -1 << (_W - 1)
 
+	LimitsMinUint   uint   = 0
 	LimitsMinUint8  uint8  = 0
 	LimitsMinUint32 uint32 = 0
 	LimitsMinUint64 uint64 = 0
